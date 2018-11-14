@@ -1,0 +1,440 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000000;}
+.s1 { color: #808080; font-style: italic;}
+.s2 { color: #000080; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #008000; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">/* MAIN.java 
+ * EE422C Project 5 submission by 
+ * Replace &lt;...&gt; with your actual data. 
+ * &lt;Chris Classie&gt; 
+ * &lt;csc2859&gt; 
+ * &lt;16355&gt; 
+ 
+ * Slip days used: &lt;1&gt; 
+ * Fall 2018 
+ */</span>
+
+
+
+<span class="s2">package </span>assignment5;
+
+<span class="s2">import </span>javafx.scene.media.*;
+<span class="s2">import </span>javafx.application.Application;
+<span class="s2">import </span>javafx.scene.Scene;
+<span class="s2">import </span>javafx.scene.layout.StackPane;
+<span class="s2">import </span>javafx.stage.Stage;
+
+<span class="s2">import </span>java.awt.*;
+<span class="s2">import </span>java.io.File;
+		<span class="s2">import </span>java.io.IOException;
+		<span class="s2">import </span>java.lang.reflect.*;
+		<span class="s2">import </span>java.net.URL;
+		<span class="s2">import </span>java.util.ArrayList;
+		<span class="s2">import </span>java.util.Enumeration;
+		<span class="s2">import </span>java.util.List;
+
+		<span class="s2">import </span>javafx.application.Application;
+<span class="s2">import </span>javafx.geometry.Insets;
+<span class="s2">import </span>javafx.scene.Parent;
+<span class="s2">import </span>javafx.scene.control.Button;
+<span class="s2">import </span>javafx.scene.control.Label;
+<span class="s2">import </span>javafx.scene.control.TextArea;
+<span class="s2">import </span>javafx.scene.control.TextField;
+<span class="s2">import </span>javafx.scene.layout.GridPane;
+		<span class="s2">import </span>javafx.application.Platform;
+		<span class="s2">import </span>javafx.collections.FXCollections;
+		<span class="s2">import </span>javafx.collections.ObservableList;
+<span class="s2">import </span>java.util.concurrent.TimeUnit;
+		<span class="s2">import </span>javafx.geometry.*;
+		<span class="s2">import </span>javafx.scene.Scene;
+		<span class="s2">import </span>javafx.scene.control.*;
+		<span class="s2">import </span>javafx.scene.layout.*;
+		<span class="s2">import </span>javafx.scene.text.Font;
+		<span class="s2">import </span>javafx.scene.text.Text;
+		<span class="s2">import </span>javafx.stage.Stage;
+<span class="s2">import </span>javafx.scene.control.ComboBox;
+<span class="s2">import </span>javafx.scene.control.Slider;
+<span class="s2">import </span>javafx.scene.layout.Background;
+		<span class="s2">import </span>javafx.scene.layout.BackgroundFill;
+		<span class="s2">import </span>javafx.scene.layout.BorderPane;
+		<span class="s2">import </span>javafx.animation.AnimationTimer;
+		<span class="s2">import </span>javafx.application.Application;
+		<span class="s2">import </span>javafx.application.Platform;
+		<span class="s2">import </span>javafx.event.ActionEvent;
+		<span class="s2">import </span>javafx.event.EventHandler;
+<span class="s2">import </span>javafx.geometry.Pos;
+		<span class="s2">import </span>org.omg.CORBA.DynAnyPackage.Invalid;
+<span class="s2">import </span>javafx.scene.shape.Circle;
+<span class="s2">import </span>javafx.scene.shape.Polygon;
+<span class="s2">import </span>javafx.fxml.FXMLLoader;
+<span class="s2">import </span>java.io.PrintStream;
+<span class="s2">import </span>java.io.ByteArrayOutputStream;
+<span class="s2">import </span>javafx.scene.control.Control;
+
+<span class="s2">import </span>javafx.application.Application;
+<span class="s2">import </span>javafx.scene.Group;
+<span class="s2">import </span>javafx.scene.Scene;
+<span class="s2">import </span>javafx.scene.paint.Color;
+<span class="s2">import </span>javafx.scene.shape.Circle;
+<span class="s2">import </span>javafx.scene.text.Font;
+<span class="s2">import </span>javafx.scene.text.Text;
+<span class="s2">import </span>javafx.stage.Stage;
+
+
+
+<span class="s2">public class </span>Main <span class="s2">extends </span>Application {
+
+	<span class="s2">public static int </span>timerN = <span class="s3">1</span>;
+
+	<span class="s2">private static </span>BorderPane borderPane = <span class="s2">new </span>BorderPane();
+	<span class="s2">static </span>GridPane worldGrid = <span class="s2">new </span>GridPane();
+	<span class="s2">static </span>GridPane critGrid = <span class="s2">new </span>GridPane();
+
+	Button makeBtn;
+	Button stepBtn;
+	Button step2Btn;
+	Button seedBtn;
+	Button statsBtn;
+	Button quitBtn;
+	Button animationStartBtn;
+	Button animationStopBtn;
+	Button speed1;
+	Button speed2;
+	Button speed3;
+
+	Label enterNumber;
+	Label statsResults;
+	Label enterType;
+	Label enterTypeStats;
+	Label enterSeed;
+	Label animateSpeed;
+	Label enterSteps;
+	Label add;
+	Label run;
+
+	Slider slider;
+
+	VBox controller;
+	VBox stats;
+
+	<span class="s2">static </span>Text textArea;
+	TextField typeCont;
+	TextField typeStats;
+	TextField number;
+	TextField numSteps;
+	TextField seed;
+
+	ComboBox classNames1;
+	ComboBox classNames2;
+
+	Region buffer1;
+
+
+
+	ByteArrayOutputStream stdOut = <span class="s2">new </span>ByteArrayOutputStream();
+	<span class="s2">static boolean </span>stop = <span class="s2">false</span>;
+
+
+	<span class="s2">private static </span>String myPackage;
+
+	<span class="s2">static </span>{
+		myPackage = Critter.<span class="s2">class</span>.getPackage().toString().split(<span class="s4">&quot; &quot;</span>)[<span class="s3">1</span>];
+	}
+
+	@Override
+	<span class="s2">public void </span>start(Stage primaryStage) {
+		<span class="s2">try </span>{
+			System.setOut(<span class="s2">new </span>PrintStream(stdOut));
+
+
+			worldGrid.setStyle(<span class="s4">&quot;-fx-background-color: #bf5700; -fx-background-insets: 0, 5;&quot;</span>);
+
+			worldGrid.setGridLinesVisible(<span class="s2">true</span>);
+
+			worldGrid.setHgap(<span class="s3">2</span>);
+			worldGrid.setVgap(<span class="s3">2</span>);
+
+			worldGrid.setPrefWidth(<span class="s3">800</span>);
+			worldGrid.setMaxSize(<span class="s3">1000</span>,<span class="s3">800</span>);
+
+
+
+			<span class="s1">//buttons</span>
+
+			//MAKE
+			makeBtn = <span class="s2">new </span>Button(<span class="s4">&quot;Make Critters&quot;</span>);
+			makeBtn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+
+					Integer num;
+					String className = classNames1.getValue().toString();
+
+					<span class="s2">if </span>(className != <span class="s2">null </span>&amp;&amp; number.getText().isEmpty() == <span class="s2">false</span>) {
+						<span class="s2">if </span>(number.getText() == <span class="s2">null </span>| number.getText().isEmpty()) {
+
+							num = <span class="s3">1</span>;
+						} <span class="s2">else </span>{
+							num = Integer.valueOf(number.getText().toString());
+						}
+						<span class="s2">while </span>(num != <span class="s3">0</span>) {
+
+							<span class="s2">try </span>{
+								Critter.makeCritter(className);
+
+							} <span class="s2">catch </span>(InvalidCritterException e) {
+								<span class="s2">return</span>;
+							}
+							num -= <span class="s3">1</span>;
+						}
+
+					}
+					Critter.displayWorld();
+
+					}
+
+
+			});
+
+			<span class="s1">//STEP</span>
+			stepBtn = <span class="s2">new </span>Button(<span class="s4">&quot;Step&quot;</span>);
+			stepBtn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+					Critter.worldTimeStep();
+					Critter.displayWorld();
+				}
+			});
+
+			step2Btn = <span class="s2">new </span>Button (<span class="s4">&quot;Do Steps&quot;</span>);
+			step2Btn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+					<span class="s2">for</span>(<span class="s2">int </span>i = <span class="s3">0</span>; i &lt; Integer.parseInt(numSteps.getText()); i++){
+						Critter.worldTimeStep();
+					}
+					Critter.displayWorld();
+				}
+			});
+
+
+			<span class="s1">//QUIT</span>
+			quitBtn = <span class="s2">new </span>Button(<span class="s4">&quot;Quit&quot;</span>);
+			quitBtn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+					System.exit(<span class="s3">0</span>);
+				}
+			});
+
+
+			<span class="s1">//SEED</span>
+			seedBtn = <span class="s2">new </span>Button(<span class="s4">&quot;Seed&quot;</span>);
+			seedBtn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+
+
+					String newSeed = seed.getText();
+
+					<span class="s2">try</span>{
+					Integer seed = Integer.parseInt(newSeed);
+
+					<span class="s2">if</span>(seed &lt; <span class="s3">0</span>) <span class="s2">throw new </span>Exception();
+
+					Critter.setSeed(Integer.toUnsignedLong(seed));
+				}
+				<span class="s2">catch</span>(Exception e) {
+
+					}
+				}
+			});
+
+
+
+			<span class="s1">//ANIMATE</span>
+			animationStartBtn = <span class="s2">new </span>Button(<span class="s4">&quot;Start Animation&quot;</span>);
+			animationStartBtn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+					<span class="s2">int </span>speed = (<span class="s2">int</span>) slider.getValue();
+					stop = <span class="s2">false</span>;
+
+					<span class="s2">while </span>(!stop) {
+
+						animationStopBtn.setOnAction(e -&gt; stop = <span class="s2">true</span>);
+						<span class="s2">for </span>(<span class="s2">int </span>i = <span class="s3">0</span>; i &lt; speed; i++) {
+
+							Critter.worldTimeStep();
+							animationStopBtn.setOnAction(e -&gt; stop = <span class="s2">true</span>);
+
+						}
+						speed = (<span class="s2">int</span>) slider.getValue();
+						<span class="s2">try </span>{
+							TimeUnit.SECONDS.sleep(<span class="s3">1</span>);
+							stop = <span class="s2">true</span>;
+						} <span class="s2">catch </span>(InterruptedException e1) {
+							e1.printStackTrace();
+						}
+						animationStopBtn.setOnAction(e -&gt; stop = <span class="s2">true</span>);
+						Critter.displayWorld();
+					}
+				}
+			});
+
+
+			animationStopBtn = <span class="s2">new </span>Button(<span class="s4">&quot;Stop Animation&quot;</span>);
+
+			speed1 = <span class="s2">new </span>Button(<span class="s4">&quot;Speed 1&quot;</span>);
+			speed2 = <span class="s2">new </span>Button(<span class="s4">&quot;Speed 2&quot;</span>);
+			speed3 = <span class="s2">new </span>Button(<span class="s4">&quot;Speed 3&quot;</span>);
+
+			Text leftTitle = <span class="s2">new </span>Text();
+			leftTitle.setText(<span class="s4">&quot;        What Starts Here </span><span class="s2">\n</span><span class="s4">Changes The Critter World&quot;</span>);
+
+			enterType = <span class="s2">new </span>Label(<span class="s4">&quot;Choose a Critter: &quot;</span>);
+			typeCont = <span class="s2">new </span>TextField();
+			enterSteps = <span class="s2">new </span>Label(<span class="s4">&quot;OR </span><span class="s2">\n</span><span class="s4">Enter Step Number&quot;</span>);
+			numSteps = <span class="s2">new </span>TextField();
+			enterTypeStats = <span class="s2">new </span>Label(<span class="s4">&quot;Choose a Critter: &quot;</span>);
+			typeStats = <span class="s2">new </span>TextField();
+			animateSpeed = <span class="s2">new </span>Label(<span class="s4">&quot;Animate Speed&quot;</span>);
+			slider = <span class="s2">new </span>Slider(<span class="s3">0</span>, <span class="s3">100</span>, <span class="s3">1</span>);
+			slider.setShowTickLabels(<span class="s2">true</span>);
+			slider.setShowTickMarks(<span class="s2">true</span>);
+			enterNumber = <span class="s2">new </span>Label(<span class="s4">&quot;Create How Many?&quot;</span>);
+			enterSeed = <span class="s2">new </span>Label(<span class="s4">&quot;Enter seed&quot;</span>);
+			number = <span class="s2">new </span>TextField();
+			seed = <span class="s2">new </span>TextField();
+			add = <span class="s2">new </span>Label(<span class="s4">&quot;Add Critters&quot;</span>);
+			run = <span class="s2">new </span>Label(<span class="s4">&quot;Step&quot;</span>);
+
+
+
+			classNames1 = <span class="s2">new </span>ComboBox();
+			classNames1.setItems(Critter.getClasses());
+
+			classNames2 = <span class="s2">new </span>ComboBox();
+			classNames2.setItems(Critter.getClasses());
+
+			buffer1 = <span class="s2">new </span>Region();
+
+			controller = <span class="s2">new </span>VBox(leftTitle, add, enterType, classNames1, enterNumber,
+					number, makeBtn, buffer1, run, stepBtn, enterSteps, numSteps, step2Btn,
+					animateSpeed, slider, animationStartBtn,
+					animationStopBtn, enterSeed, seed, seedBtn, quitBtn);
+
+			controller.setSpacing(<span class="s3">5</span>);
+			controller.setPadding(<span class="s2">new </span>Insets(<span class="s3">10</span>));
+
+
+			Text statsTitle = <span class="s2">new </span>Text();
+			statsTitle.setText(<span class="s4">&quot;Stats&quot;</span>);
+
+			textArea = <span class="s2">new </span>Text(<span class="s4">&quot;&quot;</span>);
+			typeStats.setPrefColumnCount(<span class="s3">20</span>);
+			textArea.setWrappingWidth(<span class="s3">200</span>);
+			textArea.setUnderline(<span class="s2">false</span>);
+
+			statsResults = <span class="s2">new </span>Label(<span class="s4">&quot;Results: &quot;</span>);
+
+
+			statsBtn = <span class="s2">new </span>Button(<span class="s4">&quot;View Stats&quot;</span>);
+			statsBtn.setOnAction(<span class="s2">new </span>EventHandler&lt;ActionEvent&gt;() {
+				@Override
+				<span class="s2">public void </span>handle(ActionEvent event) {
+					<span class="s2">int </span>x = <span class="s3">0</span>;
+
+					String classStats = classNames2.getValue().toString();
+					String myPackage = Critter.<span class="s2">class</span>.getPackage().toString().split(<span class="s4">&quot; &quot;</span>)[<span class="s3">1</span>];
+					String className = myPackage + <span class="s4">&quot;.&quot; </span>+ classStats;
+
+					<span class="s2">try </span>{
+						Class&lt;?&gt; newCritter = Class.forName(className);
+						Method stats = newCritter.getMethod(<span class="s4">&quot;runStats&quot;</span>, List.<span class="s2">class</span>);
+						List&lt;Critter&gt; instances = Critter.getInstances(classStats);
+						stats.invoke(newCritter, instances);
+						x++;
+					} <span class="s2">catch </span>(Exception e) {
+						<span class="s2">return</span>;
+
+					}
+					String results = stdOut.toString();
+					textArea.setText(results);
+					x--;
+				}
+			});
+
+			stats = <span class="s2">new </span>VBox(statsTitle, enterTypeStats, classNames2,
+					statsBtn, statsResults, textArea);
+			stats.setSpacing(<span class="s3">5</span>);
+			stats.getAlignment();
+			stats.setPadding(<span class="s2">new </span>Insets(<span class="s3">10</span>));
+
+
+			BorderPane root = <span class="s2">new </span>BorderPane();
+			root.setPadding(<span class="s2">new </span>Insets(<span class="s3">10</span>));
+
+			root.setLeft(controller);
+			root.setCenter(worldGrid);
+			root.setRight(stats);
+
+
+
+			String musicFile = <span class="s4">&quot;09.Eminem - Rap God Instrumental.mp3&quot;</span>;
+
+			Media sound = <span class="s2">new </span>Media(<span class="s2">new </span>File(musicFile).toURI().toString());
+			MediaPlayer mediaPlayer = <span class="s2">new </span>MediaPlayer(sound);
+			mediaPlayer.play();
+			mediaPlayer.setVolume(<span class="s3">2</span>);
+
+
+
+
+			Scene scene = <span class="s2">new </span>Scene(root, <span class="s3">1500</span>, <span class="s3">1200</span>, Color.GREEN);
+			primaryStage.setTitle(<span class="s4">&quot;University of Critter at Austin&quot;</span>);
+
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+			Critter.displayWorld();
+
+		} <span class="s2">catch </span>(Exception e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+	<span class="s2">public static void </span>main(String[] args) {
+		launch(args);
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
